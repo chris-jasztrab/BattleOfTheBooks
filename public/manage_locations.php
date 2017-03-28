@@ -1,19 +1,8 @@
-<?php
-  // 1. Create a database connection
-  $dbhost = "localhost";
-  $dbuser = "battleuser";
-  $dbpass = "MPLB@ttle";
-  $dbname = "battleofthebooks";
-  $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-  // Test if connection succeeded
-  if(mysqli_connect_errno()) {
-    die("Database connection failed: " .
-         mysqli_connect_error() .
-         " (" . mysqli_connect_errno() . ")"
-    );
-  }
-?>
 <?php require_once("../includes/functions.php"); ?>
+<?php include("../includes/layouts/header.php"); ?>
+<?php require_once("../includes/db_connection.php"); ?>
+
+<!-- this page will display all the current locations in the databse -->
 
 <?php
 	// 2. Perform database query
@@ -25,15 +14,12 @@
 		die("Database query failed.");
 	}
 ?>
-
-<?php include("../includes/layouts/header.php"); ?>
-
     <div id="main">
       <div id="navigation">
         &nbsp;
       </div>
       <div id="page">
-        <h2>Manage Categories</h2>
+        <h2>Manage Locations</h2>
         <p>
           Current Locations
         </p>
@@ -49,6 +35,9 @@
   ?>
   </ul>
       <a href="add_new_location.php">Add new location</a>
+      &nbsp;
+          <a href="admin.php">Back to admin Menu</a>
+      </p>
       </div>
 
     </div>
@@ -57,8 +46,3 @@
     		  mysqli_free_result($result);
     		?>
 <?php include("../includes/layouts/footer.php"); ?>
-
-<?php
-  // 5. Close database connection
-  mysqli_close($connection);
-?>
