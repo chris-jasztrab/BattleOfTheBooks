@@ -4,17 +4,21 @@
 <?php
   if (isset($_POST['submit'])) {
     // process the form submission
-    $location_name = $_POST["location"];
+    echo "Processing form";
+    $location_name = $_POST["location_name"];
     // Escape all the strings
+    echo "Escaping Strings";
     $location_name = mysql_prep($location_name);
-    // Insert the data into the database
-    $query  = "INSERT INTO library (";
-    $query .= " location_name";
-    $query .= ") VALUES (";
-    $query .= " '{$location_name}'";
-    $query .= ")";
-    $result = mysqli_query($connection, $query);
+    // Delete the data into the database
+    echo "Doing SQL Query";
+    $query  = "DELETE FROM library";
+    $query .= " WHERE location_name";
+    $query .= " ='{$location_name}'";
 
+    echo "<p>";
+    $result = mysqli_query($connection, $query);
+    echo $query;
+    echo "after result";
     if ($result) {
       // Success
       redirect_to("manage_locations.php");
@@ -22,7 +26,7 @@
 
   } else {
     // this is probably a GET request
-    redirect_to("add_new_location_entry_screen.php");
+    redirect_to("manage_locations.php");
   }
 ?>
 <?php

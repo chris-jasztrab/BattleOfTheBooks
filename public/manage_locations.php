@@ -34,9 +34,11 @@
     }
   ?>
   </ul>
-      <a href="add_new_location.php">Add new location</a>
+      <a href="add_new_location_entry_screen.php">Add new location</a>
       &nbsp;
-          <a href="admin.php">Back to admin Menu</a>
+			<a href="delete_location_select_screen.php">Delete a location</a>
+			&nbsp;
+      <a href="admin.php">Back to admin Menu</a>
       </p>
       </div>
 

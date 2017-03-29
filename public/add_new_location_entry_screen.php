@@ -9,7 +9,7 @@
   <!-- form for user to input location name -->
 		<form action="create_location.php" method="post">
 		  <p>Location Name ie. HHPL or MPL:
-		    <input type="text" name="location" value="" />
+		    <input type="text" maxlength="10" name="location" value="" />
 		  </p>
 		  <input type="submit" name="submit" value="Create Location" />
 		</form>

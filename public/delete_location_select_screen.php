@@ -2,12 +2,13 @@
 <?php include("../includes/layouts/header.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 
-<!-- this page will display all the current levels in the database -->
+<!-- this page will display all the current locations in the databse -->
+<!-- in a drop down list -->
 
 <?php
 	// 2. Perform database query
 	$query  = "SELECT * ";
-	$query .= "FROM levels";
+	$query .= "FROM library";
 	$result = mysqli_query($connection, $query);
 	// Test if there was a query error
 	if (!$result) {
@@ -19,25 +20,23 @@
         &nbsp;
       </div>
       <div id="page">
-        <h2>Manage Levels</h2>
+        <h2>Select a location to delete</h2>
         <p>
-          Current Levels
+
         </p>
-        <ul>
+	<form action="delete_location.php" method="post">
   <?php
-    // 3. Use returned data (if any)
-    while($subject = mysqli_fetch_assoc($result)) {
-      // output data from each row
+    // take results and put them into a drop down
+		echo "<select name='location_name'>";
+		while($location = mysqli_fetch_array($result)) {
+			echo "<option value='" . $location['location_name'] . "'>" . $location['location_name'] . "</option>";
+		}
+		echo "</select>";
   ?>
-      <li><?php echo $subject["level_name"]; ?></li>
-  <?php
-    }
-  ?>
-  </ul>
-      <a href="add_new_level_entry_screen.php">Add new level</a>
+		<input type="submit" name="submit" value="Delete Location" />
+			<p>
+      <a href="manage_locations.php">Back to manage locations</a>
       &nbsp;
-			<a href="delete_level_select_screen.php">Delete a level</a>
-			&nbsp;
       <a href="admin.php">Back to admin Menu</a>
       </p>
       </div>

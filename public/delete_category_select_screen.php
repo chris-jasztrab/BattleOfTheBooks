@@ -2,12 +2,13 @@
 <?php include("../includes/layouts/header.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 
-<!-- this page will display all the current levels in the database -->
+<!-- this page will display all the current locations in the database -->
+<!-- in a drop down list -->
 
 <?php
 	// 2. Perform database query
 	$query  = "SELECT * ";
-	$query .= "FROM levels";
+	$query .= "FROM category";
 	$result = mysqli_query($connection, $query);
 	// Test if there was a query error
 	if (!$result) {
@@ -19,25 +20,23 @@
         &nbsp;
       </div>
       <div id="page">
-        <h2>Manage Levels</h2>
+        <h2>Select a category to delete</h2>
         <p>
-          Current Levels
+
         </p>
-        <ul>
+	<form action="delete_category.php" method="post">
   <?php
-    // 3. Use returned data (if any)
-    while($subject = mysqli_fetch_assoc($result)) {
-      // output data from each row
+    // take results and put them into a drop down
+		echo "<select name='category_name'>";
+		while($category = mysqli_fetch_array($result)) {
+			echo "<option value='" . $category['category_name'] . "'>" . $category['category_name'] . "</option>";
+		}
+		echo "</select>";
   ?>
-      <li><?php echo $subject["level_name"]; ?></li>
-  <?php
-    }
-  ?>
-  </ul>
-      <a href="add_new_level_entry_screen.php">Add new level</a>
+		<input type="submit" name="submit" value="Delete category" />
+			<p>
+      <a href="manage_categories.php">Back to manage categories</a>
       &nbsp;
-			<a href="delete_level_select_screen.php">Delete a level</a>
-			&nbsp;
       <a href="admin.php">Back to admin Menu</a>
       </p>
       </div>

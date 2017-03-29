@@ -1,28 +1,28 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 
-<?php
+<<?php
   if (isset($_POST['submit'])) {
     // process the form submission
-    $location_name = $_POST["location"];
+    $category_name = $_POST["category"];
     // Escape all the strings
-    $location_name = mysql_prep($location_name);
+    $category_name = mysql_prep($category_name);
     // Insert the data into the database
-    $query  = "INSERT INTO library (";
-    $query .= " location_name";
+    $query  = "INSERT INTO category (";
+    $query .= " category_name";
     $query .= ") VALUES (";
-    $query .= " '{$location_name}'";
+    $query .= " '{$category_name}'";
     $query .= ")";
     $result = mysqli_query($connection, $query);
 
     if ($result) {
       // Success
-      redirect_to("manage_locations.php");
+      redirect_to("manage_categories.php");
     }
 
   } else {
     // this is probably a GET request
-    redirect_to("add_new_location_entry_screen.php");
+    redirect_to("add_new_category_entry_screen.php");
   }
 ?>
 <?php

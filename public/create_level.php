@@ -1,28 +1,28 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 
-<?php
+<<?php
   if (isset($_POST['submit'])) {
     // process the form submission
-    $location_name = $_POST["location"];
+    $level_name = $_POST["level"];
     // Escape all the strings
-    $location_name = mysql_prep($location_name);
+    $level_name = mysql_prep($level_name);
     // Insert the data into the database
-    $query  = "INSERT INTO library (";
-    $query .= " location_name";
+    $query  = "INSERT INTO levels (";
+    $query .= " level_name";
     $query .= ") VALUES (";
-    $query .= " '{$location_name}'";
+    $query .= " '{$level_name}'";
     $query .= ")";
     $result = mysqli_query($connection, $query);
 
     if ($result) {
       // Success
-      redirect_to("manage_locations.php");
+      redirect_to("manage_levels.php");
     }
 
   } else {
     // this is probably a GET request
-    redirect_to("add_new_location_entry_screen.php");
+    redirect_to("add_new_level_entry_screen.php");
   }
 ?>
 <?php
