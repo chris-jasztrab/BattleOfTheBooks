@@ -59,3 +59,9 @@ ul.pages { padding-left: 2em; list-style: square; }
 }
 #page h2 { color: #8D0D19; margin-top: 1em;}
 #page h3 { color: #8D0D19; }
+
+body{
+
+    font-family: Arail, sans-serif;
+
+}

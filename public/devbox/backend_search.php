@@ -30,7 +30,7 @@
 
         // Attempt select query execution
 
-        $sql = "SELECT DISTINCT author_last_name, author_first_name FROM questions_ajax WHERE author_last_name LIKE '" . $term . "%' LIMIT 5";
+        $sql = "SELECT DISTINCT (author_last_name) as author_last_name FROM questions_ajax WHERE author_last_name LIKE '" . $term . "%' LIMIT 5";
 
         if($result = mysqli_query($link, $sql)){
 
