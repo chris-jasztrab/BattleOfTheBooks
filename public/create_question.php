@@ -41,6 +41,9 @@ if (session_id() == '') {
 	}
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,16 +74,14 @@ if (session_id() == '') {
 
 <!-- Search Form Demo -->
 
-
-
-
-
       <form class="form-horizontal">
         <fieldset>
 
       <!-- Form Name -->
 
       <legend>Submit a question</legend>
+
+
 
       <!-- Text input-->
       <div class="form-group">
@@ -121,13 +122,16 @@ if (session_id() == '') {
         </div>
       </div>
 
+
+
+
       <!-- Category select populated from database -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="question_category">Question Category<br>Hold CTRL to choose multiple</label>
         <div class="col-md-4">
           <?php
             // take results and put them into a drop down
-            echo "<select id='question_category' name='question_category' class='form-control' multiple='multiple'>";
+            echo "<select id='question_category' name='question_category' class='form-control' multiple='multiple' size='10'>";
             while($category = mysqli_fetch_array($result)) {
               echo "<option value='" . $category['category_name'] . "'>" . $category['category_name'] . "</option>";
             }
@@ -201,10 +205,13 @@ if (session_id() == '') {
         </div>
       </div>
 
+
+
+<br />
       <!-- Button -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="submit_button"></label>
-        <div class="col-md-4">
+        <div class="col-md-4 text-center">
           <button id="submit_button" name="submit_button" class="btn btn-primary">Submit Question</button>
         </div>
       </div>
@@ -213,8 +220,7 @@ if (session_id() == '') {
       </form>
 
 
-
-
+</div>
 
 <!-- /Search Form Demo -->
 
@@ -256,9 +262,13 @@ jQuery(document).ready(function(){
 function copyTitle(f) {
   if(f.answer_is_title.checked == true) {
     f.question_answer.value = f.title.value;
+  }
 
+  if(!f.answer_is_title.checked == true) {
+    f.question_answer.value = "";
   }
 }
+
 
 </script>
 
