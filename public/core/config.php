@@ -25,6 +25,8 @@ class Config
                 'table'              => 'questions_ajax',
                 // specify the name of search columns
                 'searchColumns'      => ['author_first_name'],
+
+
                 // specify order by column. This is optional
                 'orderBy'            => '',
                 // specify order direction e.g. ASC or DESC. This is optional
@@ -33,7 +35,7 @@ class Config
                  * filter the result by entering table column names
                  * to get all the columns, remove filterResult or make it an empty array
                  */
-                'filterResult'       => [],
+                'filterResult'       => ['author_first_name', 'author_last_name'],
                 /**
                  * specify search query comparison operator.
                  * possible values for comparison operators are: 'LIKE' and '='. this is required
@@ -47,12 +49,12 @@ class Config
                 // specify search query case sensitivity
                 'caseSensitive'      => false,
                 // to limit the maximum number of result uncomment this:
-                //'maxResult' => 100,
+                'maxResult' => 5,
                 // to display column header, change 'active' value to true
                 'displayHeader' => [
                     'active' => true,
                     'mapper' => [
-                        'name' => 'Name',
+                        'author_first_name' => 'First Name',  'author_last_name' => 'Last Name',
 //                        'your_second_column' => 'Your Desired Second Title'
                     ]
                 ],
@@ -68,16 +70,21 @@ class Config
               'searchColumns'      => ['author_last_name'],
                 'orderBy'            => '',
                 'orderDirection'     => '',
-                'filterResult'       => [],
+                'filterResult'       => ['author_first_name', 'author_last_name'],
                 'comparisonOperator' => 'LIKE',
                 'searchPattern'      => 'q*',
                 'caseSensitive'      => false,
+                'maxResult' => 5,
                 'displayHeader' => [
-                    'active' => false,
-                    'mapper' => []
+                    'active' => true,
+                    'mapper' => [
+                        'author_first_name' => 'First Name',  'author_last_name' => 'Last Name',
+//                        'your_second_column' => 'Your Desired Second Title'
+                    ]
                 ],
                 'type'               => 'mysql',
             ],
+
             'mainMongo' => [
                 'server'       => 'your_server',
                 'database'     => 'local',
