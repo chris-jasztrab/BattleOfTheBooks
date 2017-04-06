@@ -67,84 +67,46 @@
     <fieldset>
       <legend>Submit a question</legend>
 
-      <!-- Get Title -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="title">Title</label>
-        <div class="col-md-4">
-          <input id="title" name="title" placeholder="" class="form-control" required="" type="text">
-        </div>
-      </div>
 
-      <!-- Get Authors First Name - Ajax Query -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="author_first_name">Author's First Name</label>
-        <div class="col-md-4">
-          <div style="clear: both">
-            <input type="text" class="mySearch" id="ls_query">
-          </div>
-        </div>
-      </div>
 
-      <!-- Get Authors Last Name - Ajax Query -->
+      <!-- Get the text of the actual question -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="author_last_name">Author's Last Name</label>
-        <div class="col-md-4">
-          <div style="clear: both">
-            <input type="text" class='mySearch' id="ls_query_2">
-          </div>
-        </div>
-      </div>
-
-      <!-- Get Publication Year -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="book_publication_year">Publication Year</label>
-        <div class="col-md-2">
-          <input id="book_publication_year" maxlength="4" name="book_publication_year" placeholder="" class="form-control input-md" type="text">
-        </div>
-      </div>
-
-      <!-- Get Category - Results populated from database -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="question_category">Question Category<br>Hold CTRL to choose multiple</label>
+        <label class="col-md-4 control-label" for="question_text">Question</label>
           <div class="col-md-4">
-            <?php
-              // take results and put them into a drop down
-              echo "<select id='question_category' name='question_category' class='form-control' multiple='multiple' size='10'>";
-              while($category = mysqli_fetch_array($result)) {
-                echo "<option value='" . $category['category_name'] . "'>" . $category['category_name'] . "</option>";
-              }
-              echo "</select>";
-              ?>
+            <textarea class="form-control" id="question_text" name="question_text"></textarea>
           </div>
       </div>
 
-        <!-- Get Question Level - Results populated from database -->
+      <!-- Checkbox asking if the question is the title of the book -->
+      <!-- If the box is checked javascript automatically fills in the answer field -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="level">Level</label>
+        <label class="col-md-4 control-label" for="answer_is_title"></label>
         <div class="col-md-4">
-          <?php
-            // take results and put them into a drop down
-            echo "<select id='question_level' name='question_level' class='form-control' multiple='multiple'>";
-            while($level = mysqli_fetch_array($levelresult)) {
-              echo "<option value='" . $level['level_name'] . "'>" . $level['level_name'] . "</option>";
-            }
-            echo "</select>";
-            ?>
+          <div class="checkbox">
+            <label for="answer_is_title-0">
+              <input name="answer_is_title" id="answer_is_title-0" value="1" type="checkbox" onclick="copyTitle(this.form)">
+              Book Title is Answer
+            </label>
+          </div>
         </div>
       </div>
 
-      <!-- Checkbox for private questions -->
+      <!-- Optional field where people can enter in notes about the question -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="public_or_private">Private Question?</label>
+        <label class="col-md-4 control-label" for="notes">Notes</label>
         <div class="col-md-4">
-          <label class="checkbox-inline" for="public_or_private-0">
-            <input name="public_or_private" id="public_or_private-0" value="" type="checkbox">
-            Yes
-          </label>
+          <textarea class="form-control" id="notes" name="notes"></textarea>
         </div>
       </div>
 
-    
+      <!-- Question answer -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="question_answer">Question Answer</label>
+        <div class="col-md-4">
+          <input id="question_answer" name="question_answer" placeholder="" class="form-control input-md" required="" type="text">
+        </div>
+      </div>
+
       <br />
       <!-- Submit Button -->
       <div class="form-group">
