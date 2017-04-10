@@ -40,6 +40,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <script type="text/javascript">
+      some_variable = "<?php echo $_POST['title'];?>";
+      document.write('Title is: ' + some_variable);
+
+      function copyBookTitle(f) {
+        if(f.answer_is_title.checked == true) {
+          f.question_answer.value = "<?php echo $_POST['title']; ?>";
+          document.getElementById("question_answer").disabled = true;
+        }
+
+        if(!f.answer_is_title.checked == true) {
+          f.question_answer.value = "";
+        }
+      }
+
+  </script>
+
     <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -62,18 +80,18 @@
     <title>AJAX Live Search</title>
     <!-- Live Search Styles -->
 </head>
+
 <body>
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="submit_question.php" method="post">
     <fieldset>
       <legend>Submit a question</legend>
-
 
 
       <!-- Get the text of the actual question -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="question_text">Question</label>
           <div class="col-md-4">
-            <textarea class="form-control" id="question_text" name="question_text"></textarea>
+            <textarea class="form-control" id="question_text" name="question_text" rows="10"></textarea>
           </div>
       </div>
 
@@ -84,7 +102,7 @@
         <div class="col-md-4">
           <div class="checkbox">
             <label for="answer_is_title-0">
-              <input name="answer_is_title" id="answer_is_title-0" value="1" type="checkbox" onclick="copyTitle(this.form)">
+              <input name="answer_is_title" id="answer_is_title-0" value="1" type="checkbox" onclick="copyBookTitle(this.form)">
               Book Title is Answer
             </label>
           </div>
@@ -151,16 +169,10 @@
     });
   })
 
-  function copyTitle(f) {
-    if(f.answer_is_title.checked == true) {
-      f.question_answer.value = f.title.value;
-    }
 
-    if(!f.answer_is_title.checked == true) {
-      f.question_answer.value = "";
-    }
-  }
+
 </script>
+
 </body>
 </html>
 <?php include("../includes/layouts/footer.php"); ?>

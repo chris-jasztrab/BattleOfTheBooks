@@ -2,6 +2,7 @@
 <?php include("../includes/layouts/header.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php
+
   $DS = DIRECTORY_SEPARATOR;
   file_exists(__DIR__ . $DS . 'core' . $DS . 'Handler.php') ? require_once __DIR__ . $DS . 'core' . $DS . 'Handler.php' : die('Handler.php not found');
   file_exists(__DIR__ . $DS . 'core' . $DS . 'Config.php') ? require_once __DIR__ . $DS . 'core' . $DS . 'Config.php' : die('Config.php not found');
@@ -63,7 +64,7 @@
     <!-- Live Search Styles -->
 </head>
 <body>
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="create_question_p2.php" method="post">
     <fieldset>
       <legend>Submit a question</legend>
 
@@ -144,13 +145,13 @@
         </div>
       </div>
 
-    
+
       <br />
       <!-- Submit Button -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="submit_button"></label>
         <div class="col-md-4 text-center">
-          <button id="submit_button" name="submit_button" class="btn btn-primary">Submit Question</button>
+          <button id="submit_button" name="submit_button" class="btn btn-primary">Next Step</button>
         </div>
       </div>
     </fieldset>
@@ -199,6 +200,7 @@
     }
   }
 </script>
+
 </body>
 </html>
 <?php include("../includes/layouts/footer.php"); ?>
