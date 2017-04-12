@@ -42,8 +42,7 @@
 <head>
 
   <script type="text/javascript">
-      some_variable = "<?php echo $_POST['title'];?>";
-      document.write('Title is: ' + some_variable);
+
 
       function copyBookTitle(f) {
         if(f.answer_is_title.checked == true) {
@@ -91,9 +90,10 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="question_text">Question</label>
           <div class="col-md-4">
-            <textarea class="form-control" id="question_text" name="question_text" rows="10"></textarea>
+            <textarea class="form-control input-md" id="question_text" name="question_text" rows="10" type="text"></textarea>
           </div>
       </div>
+
 
       <!-- Checkbox asking if the question is the title of the book -->
       <!-- If the box is checked javascript automatically fills in the answer field -->
@@ -113,7 +113,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="notes">Notes</label>
         <div class="col-md-4">
-          <textarea class="form-control" id="notes" name="notes"></textarea>
+          <textarea class="form-control input-md" id="notes" name="notes" type="text"></textarea>
         </div>
       </div>
 

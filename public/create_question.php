@@ -62,6 +62,9 @@
     <![endif]-->
     <title>AJAX Live Search</title>
     <!-- Live Search Styles -->
+
+  
+
 </head>
 <body>
   <form class="form-horizontal" action="create_question_p2.php" method="post">
@@ -78,7 +81,7 @@
 
       <!-- Get Authors First Name - Ajax Query -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="author_first_name">Author's First Name</label>
+        <label class="col-md-4 control-label" for="author_first_name">Author&#8217;s First Name</label>
         <div class="col-md-4">
           <div style="clear: both">
             <input type="text" class="mySearch" id="ls_query">
@@ -88,7 +91,7 @@
 
       <!-- Get Authors Last Name - Ajax Query -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="author_last_name">Author's Last Name</label>
+        <label class="col-md-4 control-label" for="author_last_name">Author&#8217;s Last Name</label>
         <div class="col-md-4">
           <div style="clear: both">
             <input type="text" class='mySearch' id="ls_query_2">
