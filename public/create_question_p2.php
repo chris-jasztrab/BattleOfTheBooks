@@ -37,6 +37,9 @@
 	}
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +87,12 @@
   <form class="form-horizontal" action="submit_question.php" method="post">
     <fieldset>
       <legend>Submit a question</legend>
+      <pre>
+        <?php
+          print_r($_POST);
+         ?>
 
+      </pre>
 
       <!-- Get the text of the actual question -->
       <div class="form-group">
@@ -133,6 +141,23 @@
           <button id="submit_button" name="submit_button" class="btn btn-primary">Submit Question</button>
         </div>
       </div>
+
+      <?php
+        $categories = implode(', ', $_POST['question_category']);
+      echo "these are the categories: ";
+        echo $categories;
+       ?>
+
+      <!-- hidden form fields - popluate from previous page -->
+          <input id="title" name="title"  type="hidden" value="<?php echo $_POST['title']; ?>">
+          <input id="author_first_name" name="author_first_name" type="hidden"  value="<?php echo $_POST['author_first_name_h']; ?>">
+          <input id="author_last_name" name="author_last_name" type="hidden"  value="<?php echo $_POST['author_last_name_h']; ?>">
+          <input id="book_publication_year" name="book_publication_year" type="hidden" value="<?php echo $_POST['book_publication_year']; ?>">
+          <input id="question_category" name="question_category"  type="hidden" value="<?php echo $categories ?>">
+          <input id="question_level" name="question_level"  type="hidden" value="<?php echo $_POST['question_level']; ?>">
+          <input id="private_question" name="private_question" type="hidden" value="<?php echo $_POST['private_question']; ?>">
+
+
     </fieldset>
   </form>
 

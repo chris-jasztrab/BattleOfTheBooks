@@ -84,8 +84,8 @@
         <label class="col-md-4 control-label" for="author_first_name">Author&#8217;s First Name</label>
         <div class="col-md-4">
           <div style="clear: both">
-        <input id="ls_query" name="author_first_name" type="text" class="mySearch"  >
-
+          <!--  <input type="text" class="mySearch" id="ls_query" name="author_first_name">-->
+              <input type="text" class="form-control" id="author_first_name" name="author_first_name">
           </div>
         </div>
       </div>
@@ -99,9 +99,6 @@
           </div>
         </div>
       </div>
-
-  <input id="title" name="author_first_name_h"  type="hidden"  value="">
-  <input id="title" name="author_last_name_h" type="hidden"  value="">
 
       <!-- Get Publication Year -->
       <div class="form-group">
@@ -117,7 +114,7 @@
           <div class="col-md-4">
             <?php
               // take results and put them into a drop down
-              echo "<select id='question_category' name='question_category[]' class='form-control' multiple='multiple' size='10'>";
+              echo "<select id='question_category' name='question_category' class='form-control' multiple='multiple' size='10'>";
               while($category = mysqli_fetch_array($result)) {
                 echo "<option value='" . $category['category_name'] . "'>" . $category['category_name'] . "</option>";
               }
@@ -132,7 +129,7 @@
         <div class="col-md-4">
           <?php
             // take results and put them into a drop down
-            echo "<select id='question_level' name='question_level' class='form-control'>";
+            echo "<select id='question_level' name='question_level' class='form-control' multiple='multiple'>";
             while($level = mysqli_fetch_array($levelresult)) {
               echo "<option value='" . $level['level_name'] . "'>" . $level['level_name'] . "</option>";
             }
@@ -145,13 +142,14 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="public_or_private">Private Question?</label>
         <div class="col-md-4">
-         <label class="radio-inline" for="radios-0">
-         <input name="private_question" id="radios-0" value="Yes" type="radio">Yes</label>
-         <label class="radio-inline" for="radios-1">
-         <input name="private_question" id="radios-1" value="No" checked="checked" type="radio">No</label>
-
+          <label class="checkbox-inline" for="public_or_private-0">
+            <input name="public_or_private" id="public_or_private-0" value="" type="checkbox">
+            Yes
+          </label>
         </div>
       </div>
+
+
       <br />
       <!-- Submit Button -->
       <div class="form-group">
@@ -184,13 +182,10 @@
         // set the input value
         jQuery('#ls_query').val(selectedOne);
         jQuery('#ls_query_2').val(selectedTwo);
-        $('input[name="author_first_name_h"]').val(selectedOne);
-        $('input[name="author_last_name_h"]').val(selectedTwo);
         // hide the result
         jQuery("#ls_query").trigger('ajaxlivesearch:hide_result');
         },
       onResultEnter: function(e, data) {
-
         // do whatever you want
         // jQuery("#ls_query").trigger('ajaxlivesearch:search', {query: 'test'});
         },
